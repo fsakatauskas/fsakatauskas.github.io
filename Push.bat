@@ -1,3 +1,3 @@
 git add .
 git commit -am "1"
-git push https://fsakatauskas:0080b72474c16e3acabe4c98454234c0c3926c2e@github.com/fsakatauskas/fsakatauskas.github.io
+git push https://fsakatauskas:ceaabc5a6d33e205590f964fef0561829e9f039d@github.com/fsakatauskas/fsakatauskas.github.io
