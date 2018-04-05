@@ -7,7 +7,7 @@
 	<style>
 		body { margin: 0px; border: 0px; }
 		#viewport { border: 1px solid black;}
-		input[type=button] { margin: 3px; width:50px; height:50px; }
+		input[type=button] { width:350px; height:50px; }
 
 	</style>
 	<script src="jquery-3.3.1.min.js"></script>
@@ -47,7 +47,7 @@
 			$("#viewport").css({ width: vpWidth, height: vpHeight, "-webkit-transform": "rotate("+vpRotate+"deg)", "transform": "rotate("+vpRotate +"deg)" });			
 		}
 		
-		setTimeout(function() { location.href += "?a" }, 5000);
+		setTimeout(function() { location.reload(); }, 5000);
 	});
 	</script>
 </head>
