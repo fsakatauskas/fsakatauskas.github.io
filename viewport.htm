@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example for ViewPort</title>
+	<style>
+		body { margin: 0px; border: 0px; }
+		#viewport { border: 1px solid black;}
+		input[type=button] { margin:3px; border:1px none; width:50px; height:50px;}
+
+	</style>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>String.prototype.format=function(){for(var r=this,t=0;t<arguments.length;t++){var e=new RegExp("\\{"+t+"\\}","gi");r=r.replace(e,arguments[t])}return r};</script>
+	
+	<script>
+	var vpWidth = 1054;
+	var vpHeight = 1264;
+	var vpRotate = 0;
+	
+	$(function() {
+		var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		
+		$("#JSViewport").text("Width: {0}px Height: {1}px".format(w,h));
+
+		update();
+		
+		$("input[type=button]").click(function() 
+		{ 
+			var value = parseInt(this.value);
+			switch(this.id)
+			{
+				case 'width': vpWidth += value; break;
+				case 'height': vpHeight += value; break;
+				case 'rotate': vpRotate = value; break;
+			}
+			update();
+		});
+		
+		function update()
+		{
+			$("#vpWidth").val(vpWidth); 
+			$("#vpHeight").val(vpHeight);
+			$("#vpRotate").val(vpRotate);
+			
+			$("#viewport").css({ width: vpWidth, height: vpHeight, "-webkit-transform": "rotate("+vpRotate+"deg)", "transform": "rotate("+vpRotate +"deg)" });			
+		}
+		
+	});
+	</script>
+</head>
+<body>
+
+<div id="viewport">
+
+<div id="checkScreen">
+
+<label>Width: </label><input type="text" id="vpWidth" /><br>
+<input type="button" value="+1" id="width"  />
+<input type="button" value="+5" id="width"  />
+<input type="button" value="+10" id="width"  />
+<input type="button" value="-1" id="width"  />
+<input type="button" value="-5" id="width"  />
+<input type="button" value="-10" id="width"  />
+<br><br>
+
+<label>Height: </label><input type="text" id="vpHeight" /><br>
+<input type="button" value="+1" id="height"   />
+<input type="button" value="+5" id="height"   />
+<input type="button" value="+10" id="height"   />
+<input type="button" value="-1" id="height"  />
+<input type="button" value="-5" id="height"  />
+<input type="button" value="-10" id="height"  />
+<br><br>
+
+<label>Rotation: </label><input type="text" id="vpRotate" /><br>
+<input type="button" value="0" id="rotate"   />
+<input type="button" value="90" id="rotate"   />
+<input type="button" value="180" id="rotate"   />
+<input type="button" value="270" id="rotate"  />
+<input type="button" value="360" id="rotate"  />
+
+</div>
+<br><br>
+<label>Related by JS:</label><div id="JSViewport">&nbsp;</div>
+
+</div>
+
+</body>
+</html>
